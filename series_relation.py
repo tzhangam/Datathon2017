@@ -20,13 +20,13 @@ count=0
 for i in range(0, 630, 30):
     data = np.append(data, sheet.loc[i:i+150, ['KONAMI']].values.ravel())
     # data = np.append(data, sheet.loc[i:i+150, ['Date']].values.ravel())
-    count=count+1
+    count = count+1
 
 # cut a 1d array in to 20 lists, each with size 151. Each list is seen as a row in matrix. The matrix is a 20 row-151 col matrix
 data = data.reshape(count, 151)
 
 # transpose the matrix, to be a 151 row-20 col matrix. Each col serves as a data series.
-data=data.transpose()
+data = data.transpose()
 print(data)
 f_test, _ = fg(X=data, y=target)
 f_test /= np.max(f_test)
